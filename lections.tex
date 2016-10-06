@@ -1,0 +1,84 @@
+%% lections.tex
+
+% Выбор класса документа
+\documentclass[
+a4paper,
+12pt,
+draft
+]{article}
+
+\usepackage%[warn]%
+{mathtext} % русские буквы в формулах
+\usepackage{textcomp} % Дополнительный набор текстовых символов
+
+%% "Висячие" переносы
+\defaulthyphenchar=127
+\protected\def\-{\ifnum\hyphenchar\font>0\discretionary{\char\hyphenchar\font}{}{}\fi} 
+
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}   % Выбор внутренней ТеХ-кодировки
+\usepackage[utf8]{inputenc} % Выбор кодовой страницы документа
+\usepackage[english, russian]{babel} % Выбор языка документа
+
+\DeclareSymbolFont{T2Aletters}{T2A}{cmr}{m}{it} % курсивные математические русские буквы
+
+\usepackage{
+  indentfirst, % Первый параграф раздела с красной строки
+  fullpage % Более полное заполнение листа (texlive-latex-extra)
+}
+
+\binoppenalty=10000 % Разрывы строк после знаков бинарных операций
+\relpenalty=10000   % Разрывы строк после знаков бинарных отношений
+\usepackage{
+  amsmath, % \text
+  amssymb,  % \varnothing \leqslant \geqslant
+  amsthm   % Теоремы, определения, замечания.
+}
+
+\usepackage{stackrel} % символы под знаком (расширение команды \stackrel)
+
+\usepackage{qtree} % Синтаксические деревья
+\newcommand{\qleafhook}[1]{\textbf{#1}} % Листья деревьев выделены \textbf
+
+
+\usepackage[labelsep=period]{caption} %заменить умолчальное разделение
+                                %':' на '.' в подписях к рисункам и
+                                %таблицам
+
+\usepackage{multirow}  % Объединение строк в таблице
+\usepackage{longtable} % Перенос таблиц между страницами
+\usepackage{array}     % 
+
+%\usepackage[matrix,arrow,curve]{xy} % Коммутативные диаграммы с
+                                % помощью Xy-pic
+\usepackage[all]{xy}
+
+
+\theoremstyle{definition}
+\newtheorem{defin}{Определение}
+\theoremstyle{remark}
+\newtheorem*{ex}{Пример}
+\newtheorem*{rem}{Замечание}
+\theoremstyle{plain}
+\newtheorem*{theorem}{Теорема}
+\newtheorem*{consequence}{Следствие} %consequence of the theorem
+
+\newcounter{N}
+
+\title{Структурно-стохастические методы}
+%\author{Михаил Юрьевич Охтилев}
+\date{}
+
+\includeonly{
+ch5,
+ch6,
+}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\setcounter{section}{5}
+\include{ch5}
+\include{ch6}
+\end{document}
